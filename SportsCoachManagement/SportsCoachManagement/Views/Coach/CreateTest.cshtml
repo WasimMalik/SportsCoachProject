@@ -1,0 +1,40 @@
+﻿@model SportsCoachManagement.ViewModel.TestTypeViewModel
+@{
+    ViewData["Title"] = "CreateTest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Create New Test</h3>
+@using (Html.BeginForm("CreateTest", "Coach", FormMethod.Post, new { @id = "frmAddtest" }))
+{
+    <div class="row">
+        <div class="col-md-2"> @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })</div>
+        <div class="col-md-2"> @Html.DropDownListFor(model => model.Type, Model.TestTypes, new { @class = "form-control" })</div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2"> @Html.LabelFor(model => model.TestDate, htmlAttributes: new { @class = "control-label col-md-2" })</div>
+        <div class="col-md-2">  @Html.TextBoxFor(model => model.TestDate, new { @class = "form-control", @readonly = "readonly", @id = "SelectedDate" })</div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"> <button type="submit" value="Save">Save</button></div>
+
+    </div>
+
+}
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script>
+    $(function () {
+        $('#SelectedDate').datepicker().datepicker('setDate', 'today');
+
+        $("#SelectedDate").datepicker({
+            showOn: 'button',
+            buttonImageOnly: true,
+            buttonImage: 'http://jqueryui.com/resources/demos/datepicker/images/calendar.gif'
+        });
+    });
+</script>

@@ -1,0 +1,32 @@
+﻿@model SportsCoachManagement.ViewModel.SportsViewModel
+@{
+    ViewData["Title"] = "Test Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("AddAthelete", "Coach", FormMethod.Post, new { @id = "frmAddAthelete" }))
+{
+    <table id="Participant" class="table table-striped table-bordered dt-responsive nowrap" width="100%">
+        <thead>
+            <tr>
+                <th> <span style="font-size:large">Ranking</span></th>
+                <th><span style="font-size:large"> Distance</span></th>
+                <th><span style="font-size:large"> Fitness</span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var mod in Model.sp_TestDetail)
+            {
+                <tr>
+                    <td><span class="testdate">@mod.Ranking</span></td>
+                    <td>@mod.Distance</td>
+                    <td><span class="testtype"> @mod.FitnessRating </span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-2"> <button type="submit" value="Save">Add New ATHLETE TO TEST</button></div>
+        <div class="col-md-2">DELETE TEST</div>
+    </div>
+}
